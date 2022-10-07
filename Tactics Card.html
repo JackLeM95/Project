@@ -1,0 +1,1975 @@
+ 
+
+<!DOCTYPE html>
+
+<html>
+    
+  
+   <head>
+   
+ 
+ 
+<title>Drawing Lines with Rubber Bands</title>
+
+<style>
+
+
+
+body{
+      background:#eeeeee;
+
+}
+ .floatingControls {
+         position: absolute;
+         left:150px;
+         top: 200px;
+         width:300px;
+         padding: 20px;
+         border: thin solid rgba(0, 0, 0, 0.3);
+         background: rgba(0, 0, 200, 0.1);
+         color:blue;
+         font: 14px Arial;
+                        -webkit-box-shadow: rgba(0, 0, 0, 0.2) 6px 6px 8px;
+                        -moz-box-shadow: rgba(0,0,0,0.2) 6px 6px 8px;
+                        box-shadow: rgba(0, 0, 0, 0.2) 6px 6px 8px;
+         display: none;
+      }
+      .floatingControls p{
+         margin-top: 0px;
+         margin-bottom: 20px;
+      
+      }
+.floatingControlsOne {
+         position: absolute;
+         left:150px;
+         top: 500px;
+         width:300px;
+         padding: 20px;
+         border: thin solid rgba(0, 0, 0, 0.3);
+         background: rgba(0, 0, 200, 0.1);
+         color:blue;
+         font: 14px Arial;
+                        -webkit-box-shadow: rgba(0, 0, 0, 0.2) 6px 6px 8px;
+                        -moz-box-shadow: rgba(0,0,0,0.2) 6px 6px 8px;
+                        box-shadow: rgba(0, 0, 0, 0.2) 6px 6px 8px;
+         display: none;
+      }
+      .floatingControlsOne p{
+         margin-top: 0px;
+         margin-bottom: 20px;
+      
+      }
+#controls{
+           position:absolute;
+           left:25px;
+           top:25px;
+}
+#controlsOne{
+           position:absolute;
+           left:25px;
+           top:1300px;
+}
+
+#canvas{
+        
+        cursor:pointer;
+        margin-left:10px;
+        margin-top:230px;
+        -webkit-box-shadow:4px 4px 8px rgba(0,0,0,0.5);
+        -moz-box-shadow:4px 4px 8px rgba (0,0,0,0.5);
+        box-shadow:4px 4px 8px rgba (0,0,0,0.5);
+
+}
+#dragDiv {
+         position: absolute;
+         left: 50px;
+         top: 50px;
+      }
+input[type='radio']:after {
+        width: 15px;
+        height: 15px;
+       border-radius: 15px;
+        top: -2px;
+        left: -1px;
+        position: relative;
+        background-color: #d1d3d1;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        border: 2px solid white;
+    }
+
+    input[type='radio']:checked:after {
+        width: 15px;
+        height: 15px;
+        border-radius: 15px;
+        top: -2px;
+        left: -1px;
+        position: relative;
+        background-color: #ffa500;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        border: 2px solid white;
+    }
+#canvasOne{
+        background:#7FFF00;
+        cursor:pointer;
+        margin-left:50px;
+        margin-top:500px;
+        -webkit-box-shadow:4px 4px 8px rgba(0,0,0,0.5);
+        -moz-box-shadow:4px 4px 8px rgba (0,0,0,0.5);
+        box-shadow:4px 4px 8px rgba (0,0,0,0.5);
+
+}
+#dragDiv {
+         position: absolute;
+         left: 25px;
+         top: 50px;
+      }
+#philPower{
+           position: absolute;
+         padding:20px;
+         left: 20px;
+         top: 10px;
+         font-family:Arial;
+         border: 1px solid gray;
+         background-color:lightskyblue;
+         border-radius:10px;
+         width:1100px;
+}  
+#bbcSport {
+position: absolute;
+         padding:20px;
+         left: 20px;
+         top: 970px;
+         font-family:Arial;
+         border: 1px solid gray;
+         background-color:lightskyblue;
+         border-radius:10px;
+         width:200px;
+}
+#bbcSportOne {
+position: absolute;
+         padding:20px;
+         left: -20px;
+         top: 2200px;
+         font-family:Arial;
+         border: 1px solid gray;
+         background-color:lightskyblue;
+         border-radius:10px;
+         width:200px;
+}
+#philPowerOne{
+           position: absolute;
+         padding:20px;
+         left: 20px;
+         top: -40px;
+         font-family:Arial;
+         border: 1px solid gray;
+         background-color:lightskyblue;
+         border-radius:10px;
+         width:1100px;
+}  
+#wePotato{
+    position: absolute;
+    padding:5px;
+    left: 10px;
+    font-family:Arial;
+    top: 1090px;
+}
+#wePotatoOne{
+    position: absolute;
+    padding:5px;
+    left: 10px;
+    font-family:Arial;
+    top: 2325px;
+}
+#qqqwEdddd{
+padding:10px;
+top:10px;
+}
+#qqqwEdddz{
+padding:5px;
+top:10px;
+}
+</style>
+
+</head>
+
+<body>
+<button onclick="download()">Download</button>
+<div id='rarCanvas'>
+<canvas id='canvas' width='900' height='700'>
+
+Canvas not supported
+
+</canvas>
+<div id='controls'>
+<div id ='philPower'>
+<div id='radios'>
+       
+         <input type='radio' id='repeatRadio' name='patternRadio'/>  Line
+         <input type='radio' id='dottedRepeatRadio' name='patternRadio'/>  Dotted Line 
+         <input type='radio' id='noRepeatRadio' name='patternRadio'/>  Curve
+         <input type='radio' id='dottedRepeatRadioCurve' name='patternRadio'/> Dotted Curve
+         <input type='radio' id='weeRepeatRadio' name='patternRadio'/>  Circle
+         <input type='radio' id='triangleRepeatRadioCurve' name='patternRadio'/> Triangle 
+         <input type='radio' id='polygonRepeatRadio' name='patternRadio'/>  Polygon
+         <input type='radio' id='eraserRepeatRadio' name='patternRadio'/>  Eraser
+         <input type='radio' id='textRepeatRadio' name='patternRadio'/>  Text
+         <input type='radio' id='disableRepeatRadio' name='patternRadio'/>  Disable control panel
+
+<div id = 'qqqwEdddd'>
+                                     Stroke color:          <select id='strokeStyleSelect'>
+        <option value='red'selected>red</option>
+        <option value='green'>green</option>
+        <option value='blue'>blue</option>
+        <option value='orange'>orange</option>
+        <option value='cornflowerblue'>cornflowerblue</option>
+        <option value='white'>white</option>
+        <option value='goldenrod'>goldenrod</option>
+        <option value='navy'>navy</option>  
+        <option value='purple'>purple</option>
+        </select>      
+
+Fill color: <select id='fillStyleSelect'>
+                        <option value='rgba(255,0,0,0.5)'>semi-transparent red</option>
+                        <option value='green'>green</option>
+                        <option value='rgba(0,0,255,0.5)'>semi-transparent blue</option>
+                        <option value='orange'>orange</option>
+                        <option value='rgba(100,140,230,0.5)'>semi-transparent cornflowerblue</option>
+                        <option value='goldenrod'>goldenrod</option>
+                        <option value='white'>white</option>
+                        <option value='black'>black</option>
+                        <option value='navy'>navy</option>
+                        <option value='purple'selected>purple</option>
+                        
+                     </select>
+Line width: <select id='lineWidthSelect'>
+                        <option value=4 select>4</option>
+                        <option value=3>3</option>
+                        <option value=6>6</option>
+                        <option value=8>8</option>
+                        <option value=10>10</option>
+                        <option value=12>12</option>
+                        <option value=20>20</option>
+                     </select>
+Polygon Sides: <select id='sidesSelect'>
+                        <option value=3 select>3</option>
+                        <option value=4>4</option>
+                        <option value=6>6</option>
+                        <option value=8>8</option>
+                        <option value=10>10</option>
+                        <option value=12>12</option>
+                        <option value=20>20</option>
+                     </select>
+Polygon start angle: <select id='startAngleSelect'>
+                        <option value=0 select>0</option>
+                        <option value=22.5>22.5</option>
+                        <option value=45>45</option>
+                        <option value=67.5>67.5</option>
+                        <option value=90>90</option>
+                     </select>
+
+   </div> 
+<div id = 'qqqwEdddz'>                        
+<div id='fontSelectDiv'>
+         Font: <select id='fontSelect'>
+                  <option value='Arial' selected>Arial</option>
+                  <option value='Comic Sans' selected>Comic Sans</option>
+                  <option value='Lucida Sans'>Lucida Sans</option>
+                  <option value='Helvetica'>Helvetica</option>
+                  <option value='Palatino'>Palatino</option>
+               </select>
+
+Font Size: <select id='sizeSelect'>
+                  <option value='32'selected>32 px</option>
+                  <option value='48'>48 px</option>
+                  <option value='64'>64 px</option>
+                  <option value='128'>128 px</option>
+               </select>
+ 
+Eraser width: <select id='eraserWidthSelect'>
+                      <option value=25>25</option>
+                      <option value=50>50</option>
+                      <option value=75>75</option>
+                      <option value=100>100</option>
+                      <option value=125>125</option>
+                      <option value=150>150</option>
+                      <option value=175>175</option>
+                      <option value=200>200</option>
+                     </select>
+</div>
+</div>
+ 
+<div id = 'qqqwEdddz'>
+
+       
+       
+     Fill <input id='fillCheckbox' type='checkbox' checked/>    
+     
+     <input id='eraseAllButton' type='button' value='Erase all'/>
+<div>
+</div>
+<div id='instructions' class='floatingControls'>
+      <p>Drag the control points to
+         change the position of the triangle/curve .</p>
+
+      
+
+      <input id='instructionsOkayButton' type='button' value='Okay' autofocus/>
+      <input id='instructionsNoMoreButton' type='button'
+             value='Do not show these instructions again'/>
+    </div>
+<input id='instructionsOkayButtonOne' type='button' value='Okay' autofocus/>
+</div>
+</div>
+</div>
+</div>
+<textarea id="wePotato" rows="8" cols="125">
+Explain tactics on the tactics card. You won't be able to write in the text area if the Text is selected on the control panel.
+</textarea>
+<div id='instructionsText' class='floatingControls'>
+      <p>Write text on Tactices Card</p>
+
+      <p>After you have written the Text on the Tactics Card please select Disable 
+before completing the other Tactics Card otherwise you get the same Text written on both Tactics Cards</p>
+
+      <input id='instructionsOkayButtonText' type='button' value='Okay' autofocus/>
+      <input id='instructionsNoMoreButtonText' type='button'
+             value='Do not show these instructions again'/>
+   
+</div>
+<div id='bbcSport'>
+<input type='radio' id='moveBackButton' name ='patternRadio'/> Enable control panel
+</div>
+</div>
+<div id='fontSelectDivOne'>
+<div id='fontSelectOne'>
+               </div>
+
+ <div id='sizeSelectOne'>
+               </div>
+
+
+        
+
+<div id='guidewireCheckbox'/>
+</div>
+     
+</div>
+<canvas id='canvasOne' width='0' height='0'>
+
+Canvas not supported
+
+</canvas>
+<script>
+TextCursor = function (fillStyle, width) {
+   this.fillStyle   = fillStyle || 'rgba(0, 0, 0, 0.7)';
+   this.width       = width || 2;
+   this.left        = 0;
+   this.top         = 0;
+};
+
+
+   TextCursor.prototype = {
+   getHeight: function (context) {
+      var h = context.measureText('M').width;
+      return h + h/6;
+   },
+getHeight: function (ctx) {
+      var h = ctx.measureText('M').width;
+      return h + h/6;
+   },
+createPath: function (context) {
+      context.beginPath();
+      context.rect(this.left, this.top,
+                   this.width, this.getHeight(context));
+   },
+createPath: function (ctx) {
+      ctx.beginPath();
+      ctx.rect(this.left, this.top,
+                   this.width, this.getHeight(ctx));
+   },
+draw: function (context, left, bottom) {
+      context.save();
+
+      this.left = left;
+      this.top = bottom - this.getHeight(context);
+
+      this.createPath(context);
+
+      context.fillStyle = this.fillStyle;
+      context.fill();
+         
+      context.restore();
+   },
+draw: function (ctx, left, bottom) {
+      ctx.save();
+
+      this.left = left;
+      this.top = bottom - this.getHeight(ctx);
+
+      this.createPath(ctx);
+
+      ctx.fillStyle = this.fillStyle;
+      ctx.fill();
+         
+      ctx.restore();
+   },
+      
+
+   
+   erase: function (context, imageData) {
+      context.putImageData(imageData, 0, 0,
+         this.left, this.top,
+         this.width, this.getHeight(context));  
+},
+erase: function (ctx, imageData) {
+      ctx.putImageData(imageData, 0, 0,
+         this.left, this.top,
+         this.width, this.getHeight(ctx));  
+}
+};
+TextLine = function (x, y) {
+   this.text = '';
+   this.left = x;
+   this.bottom = y;
+   this.caret = 0;
+};
+
+
+TextLine.prototype = {
+   insert: function (text) {
+      this.text = this.text.substr(0, this.caret) + text +
+                  this.text.substr(this.caret);
+      this.caret += text.length;
+   },
+
+   removeCharacterBeforeCaret: function () {
+      if (this.caret === 0)
+         return;
+
+      this.text = this.text.substring(0, this.caret-1) +
+                  this.text.substring(this.caret);
+
+      this.caret--;
+   },
+
+   getWidth: function(context) {
+      return context.measureText(this.text).width;
+   },
+getWidth: function(ctx) {
+      return ctx.measureText(this.text).width;
+   },
+   getHeight: function (context) {
+      var h = context.measureText('W').width;
+      return h + h/6;
+   },
+getHeight: function (ctx) {
+      var h = ctx.measureText('W').width;
+      return h + h/6;
+   },
+   draw: function(context) {
+      context.save();
+      context.textAlign = 'start';
+      context.textBaseline = 'bottom';
+       
+      context.fillText(this.text, this.left, this.bottom);
+      context.strokeText(this.text, this.left, this.bottom);
+      context.restore();
+   },
+draw: function(ctx) {
+      ctx.save();
+      ctx.textAlign = 'start';
+      ctx.textBaseline = 'bottom';
+       
+      ctx.fillText(this.text, this.left, this.bottom);
+
+      ctx.restore();
+   },
+   erase: function (context, imageData) {
+      context.putImageData(imageData, 0, 0);
+   },
+   erase: function (ctx, imageData) {
+      ctx.putImageData(imageData, 0, 0);
+   }
+};
+  var canvas = document.getElementById('canvas'),
+  context = canvas.getContext('2d'),
+  eraseAllButton = document.getElementById('eraseAllButton'),
+  strokeStyleSelect = document.getElementById('strokeStyleSelect'),
+  fillStyleSelect= document.getElementById('fillStyleSelect'),
+  guidewireCheckbox = document.getElementById('guidewireCheckbox'),
+  repeatRadio= document.getElementById('repeatRadio'),
+  noRepeatRadio= document.getElementById('noRepeatRadio'),
+  weeRepeatRadio= document.getElementById('weeRepeatRadio'),
+  polygonRepeatRadio= document.getElementById('polygonRepeatRadio'),
+  eraserRepeatRadio = document.getElementById('eraserRepeatRadio'),
+  textRepeatRadio= document.getElementById('textRepeatRadio'),
+  disableRepeatRadio= document.getElementById('disableRepeatRadio'),
+  dottedrepeatRadio = document.getElementById('dottedRepeatRadio'),
+  triangleRepeatRadioCurve = document.getElementById('triangleRepeatRadioCurve'),
+  dottedrepeatRadioCurve = document.getElementById('dottedRepeatRadioCurve'),
+  eraserWidthSelect = document.getElementById('eraserWidthSelect'),
+  asssWeee= document.getElementById('asssWee'),
+  moveBackButton = document.getElementById('moveBackButton'),
+  instructionsOkayButton = document.getElementById('instructionsOkayButton'),
+  instructions = document.getElementById('instructions'),
+  triangleInstructions = document.getElementById('triangleInstructions'),
+  instructionsNoMoreButton = document.getElementById('instructionsNoMoreButton'),
+  instructionsOkayButtonText = document.getElementById('instructionsOkayButtonText'),
+  instructionsText = document.getElementById('instructionsText'),
+  instructionsNoMoreButtonText = document.getElementById('instructionsNoMoreButtonText'),
+  fontSelect = document.getElementById('fontSelect'),
+    sizeSelect = document.getElementById('sizeSelect'),
+  fillCheckbox = document.getElementById('fillCheckbox'),
+  drawingSurfaceImageData, 
+  mousedown={},
+  rubberbandRect = {},
+  dragging = false,
+  showInstructions = true,
+  showTriangleInstructions = true,
+  triangleInstructions = true,
+  showInstructionsText = true,
+  editing=false,
+  drawingImageData,
+  endPoints     = [ {}, {} ],
+  controlPoints = [ {}, {} ],
+  endTrianglePoints= [ {}, {} ],
+  controlTrianglePoints= [ {}, {} ],
+  draggingPoint = false,
+  draggingOffsetX,
+  draggingOffsetY,
+  sides = 8,
+  startAngle = 0,
+  polygons = [],
+  lastX,
+  lastY,
+GRID_STROKE_STYLE = 'lightgray',
+    GRID_HORIZONTAL_SPACING = 10,
+    GRID_VERTICAL_SPACING = 10,
+
+    cursor = new TextCursor(),
+
+    line,
+
+    blinkingInterval,
+    BLINK_TIME = 1000,
+    BLINK_OFF = 300,
+  GRID_STROKE_STYLE = 'lightblue',
+    GRID_SPACING = 10,
+
+    CONTROL_POINT_RADIUS = 5,
+    CONTROL_POINT_STROKE_STYLE = 'blue',
+    CONTROL_POINT_FILL_STYLE = 'rgba(255, 255, 0, 0.5)',
+
+    END_POINT_STROKE_STYLE = 'navy',
+    END_POINT_FILL_STYLE   = 'rgba(0, 255, 0, 0.5)',
+ 
+    GUIDEWIRE_STROKE_STYLE = 'rgba(0,0,230,0.4)',
+    ERASER_LINE_WIDTH = 1,
+
+    ERASER_SHADOW_COLOR = 'rgb(0,0,0)',
+    ERASER_SHADOW_STYLE = 'blue',
+    ERASER_STROKE_STYLE = 'rgb(0,0,255)',
+    ERASER_SHADOW_OFFSET = -5,
+    ERASER_SHADOW_BLUR = 20,
+
+    GRID_HORIZONTAL_SPACING = 10,
+    GRID_VERTICAL_SPACING = 10,
+    GRID_LINE_COLOR = 'lightblue',
+    drawingImageData,
+    drawingSurfaceImageData,
+    GRID_STROKE_STYLE = 'lightblue',
+    GRID_SPACING = 10,
+
+    CONTROL_POINT_RADIUS = 5,
+    CONTROL_POINT_STROKE_STYLE = 'blue',
+    CONTROL_POINT_FILL_STYLE = 'rgba(255, 255, 0, 0.5)',
+    rad = 80,
+    sAng = Math.PI,
+    eAng = Math.PI * 1.5, 
+    
+
+    END_POINT_STROKE_STYLE = 'navy',
+    END_POINT_FILL_STYLE   = 'rgba(0, 255, 0, 0.5)',
+ 
+    GUIDEWIRE_STROKE_STYLE = 'rgba(0,0,230,0.4)',
+    guidewires = guidewireCheckbox.checked;
+ var canvasOne = document.getElementById('canvasOne'),
+  ctx = canvasOne.getContext('2d'),
+    guidewires = guidewireCheckbox.checked;
+
+function saveDrawingSurface(){
+              drawingSurfaceImageData = context.getImageData(0,0,
+                                         canvas.width,
+                                         canvas.height);
+
+
+}            
+function saveDrawingSurfaceOne(){
+             
+}
+function drawGriz(color, stepx, stepy){
+if(eraserRepeatRadio.checked){
+   
+   context.save();
+   context.clearRect(0,0, context.canvas.width,  context.canvas.height);
+   context.restore();
+}
+}
+function drawGrid(color, stepx, stepy){
+if(eraserRepeatRadioOne.checked){
+  
+   ctx.save();
+   ctx.clearRect(0,0, ctx.canvas.width,  ctx.canvas.height);
+   ctx.restore();
+}
+}
+
+function windowToCanvas(x,y){
+   var bbox = canvas.getBoundingClientRect();
+   return {x: x - bbox.left * (canvas.width / bbox.width),
+           y: y - bbox.top * (canvas.height / bbox.height)}; 
+
+
+
+
+
+}
+
+
+
+function restoreDrawingSurface(){
+        context.putImageData(drawingSurfaceImageData, 0, 0);
+
+         
+}
+
+function skySports(){
+context.beginPath();
+context.rect(0, 0, 900, 1000);
+context.fillStyle = "#7FFF00";
+context.fill();
+context.beginPath();
+context.moveTo(10, 30);
+context.lineTo(880, 30);
+context.lineWidth = 7;
+context.strokeStyle = "white";
+context.shadowBlur = 0;
+context.shadowOffsetX = 0;
+context.shadowOffsetY = 0;
+context.stroke();
+context.beginPath();
+context.arc(400,190,70,0, Math.PI, false);
+context.lineWidth = 7;
+context.strokeStyle = "white";
+context.shadowBlur = 0;
+context.shadowOffsetX = 0;
+context.shadowOffsetY = 0;
+context.stroke();
+context.beginPath();
+context.arc(450,780,290,1.1*Math.PI,1.9*Math.PI);
+context.lineWidth = 7;
+context.strokeStyle = "white";
+context.shadowBlur = 0;
+context.shadowOffsetX = 0;
+context.shadowOffsetY = 0;
+context.stroke();
+context.beginPath();
+context.arc(400,130,5,0,2 * Math.PI);
+context.lineWidth = 7;
+context.strokeStyle = "white";
+context.fillStyle = "white";
+context.shadowBlur = 0;
+context.shadowOffsetX = 0;
+context.shadowOffsetY = 0;
+context.stroke();
+context.fill();
+context.beginPath();
+context.moveTo(11, 50);
+context.quadraticCurveTo(50, 50, 50, 30);
+context.lineWidth = 7;
+context.strokeStyle = "white";
+context.shadowBlur = 0;
+context.shadowOffsetX = 0;
+context.shadowOffsetY = 0;
+context.stroke();
+context.beginPath();
+context.moveTo(874, 50);
+context.quadraticCurveTo(850, 60, 830, 30);
+context.lineWidth = 7;
+context.strokeStyle = "white";
+context.shadowBlur = 0;
+context.shadowOffsetX = 0;
+context.shadowOffsetY = 0;
+context.stroke();
+context.beginPath();
+context.moveTo(10, 693);
+context.lineTo(880, 693);
+context.lineWidth = 7;
+context.strokeStyle = "white";
+context.shadowBlur = 0;
+context.shadowOffsetX = 0;
+context.shadowOffsetY = 0;
+context.stroke();
+context.beginPath();
+context.moveTo(13, 695);
+context.lineTo(13, 30);
+context.lineWidth = 7;
+context.strokeStyle = "white";
+context.shadowBlur = 0;
+context.shadowOffsetX = 0;
+context.shadowOffsetY = 0;
+context.stroke();
+context.beginPath();
+context.moveTo(877, 695);
+context.lineTo(877, 30);
+context.lineWidth = 7;
+context.strokeStyle = "white";
+context.shadowBlur = 0;
+context.shadowOffsetX = 0;
+context.shadowOffsetY = 0;
+context.stroke();
+context.beginPath();
+context.moveTo(470, 15);
+context.lineTo(340, 15);
+context.lineWidth = 25;
+context.strokeStyle = "white";
+context.shadowBlur = 0;
+context.shadowOffsetX = 0;
+context.shadowOffsetY = 0;
+context.stroke();
+context.closePath();
+context.beginPath();
+context.moveTo(500, 30);
+context.lineTo(500, 93);
+context.lineWidth = 7;
+context.strokeStyle = "white";
+context.shadowBlur = 0;
+context.shadowOffsetX = 0;
+context.shadowOffsetY = 0;
+context.stroke();
+context.closePath();
+context.beginPath();
+context.moveTo(648, 30);
+context.lineTo(648, 193);
+context.lineWidth = 7;
+context.strokeStyle = "white";
+context.shadowBlur = 0;
+context.shadowOffsetX = 0;
+context.shadowOffsetY = 0;
+context.stroke();
+context.closePath();
+context.beginPath();
+context.moveTo(177, 190);
+context.lineTo(650, 190);
+context.lineWidth = 7;
+context.strokeStyle = "white";
+context.shadowBlur = 0;
+context.shadowOffsetX = 0;
+context.shadowOffsetY = 0;
+context.stroke();
+context.closePath();
+context.beginPath();
+context.moveTo(300, 90);
+context.lineTo(500, 90);
+context.lineWidth = 7;
+context.strokeStyle = "white";
+context.shadowBlur = 0;
+context.shadowOffsetX = 0;
+context.shadowOffsetY = 0;
+context.stroke();
+context.setLineDash([0,0]);
+context.closePath();
+context.beginPath();
+context.moveTo(303, 30);
+context.lineTo(303, 93);
+context.lineWidth = 7;
+context.strokeStyle = "white";
+context.shadowBlur = 0;
+context.shadowOffsetX = 0;
+context.shadowOffsetY = 0;
+context.stroke();
+context.setLineDash([0,0]);
+context.closePath();
+context.beginPath();
+context.moveTo(180, 30);
+context.lineTo(180, 193);
+context.lineWidth = 7;
+context.strokeStyle = "white";
+context.shadowBlur = 0;
+context.shadowOffsetX = 0;
+context.shadowOffsetY = 0;
+context.stroke();
+context.setLineDash([0,0]);
+context.closePath();
+}
+
+function setFont() {
+   context.font = sizeSelect.value + 'px ' + fontSelect.value;
+    saveDrawingSurfaceOne();
+}
+function setFontOne() {
+   ctx.font = sizeSelectOne.value + 'px ' + fontSelectOne.value;
+   saveDrawingSurface();
+}
+function blinkCursor(x, y) {
+   clearInterval(blinkingInterval);
+}
+
+function moveCursor(x, y) {
+   cursor.erase(context, drawingSurfaceImageData);
+   saveDrawingSurface();
+   context.putImageData(drawingSurfaceImageData, 0, 0);
+
+   cursor.draw(context, x, y);
+   blinkCursor(x, y);
+}
+
+function drawPolygon(polygon) {
+   context.beginPath();
+   polygon.createPath(context);
+   polygon.stroke(context);
+   context.setLineDash([0,0]);
+
+   if (fillCheckbox.checked) {
+      polygon.fill(context);
+   }
+}
+
+function updateRubberbandRectangle(loc){
+    rubberbandRect.width = Math.abs(loc.x - mousedown.x);
+    rubberbandRect.height = Math.abs(loc.y - mousedown.y);
+
+if (loc.x > mousedown.x) rubberbandRect.left = mousedown.x;
+else                     rubberbandRect.left = loc.x;
+
+
+if (loc.y > mousedown.y) rubberbandRect.top = mousedown.y;
+else                     rubberbandRect.top = loc.y;
+
+
+
+
+}
+function drawRubberbandShape(loc){
+   context.beginPath();
+   context.moveTo(mousedown.x, mousedown.y);
+   context.lineTo(loc.x,loc.y);
+   context.stroke();
+   context.strokeStyle = strokeStyleSelect.value;
+   context.lineWidth = lineWidthSelect.value;
+   cursor.erase(ctx, drawingSurfaceImageData);
+   context.setLineDash([0,0]);
+}
+
+
+function updateRubberband(loc){
+  updateRubberbandRectangle(loc);
+  drawRubberbandShape(loc);
+  
+
+}
+
+
+function drawRubberbandDotted(loc){
+   context.beginPath();
+   context.moveTo(mousedown.x, mousedown.y);
+   context.lineTo(loc.x,loc.y);
+   context.stroke();
+   context.strokeStyle = strokeStyleSelect.value;
+   context.lineWidth = lineWidthSelect.value;
+   context.setLineDash([5,5]);
+};
+
+function updateRubberbandOne(loc){
+  updateRubberbandRectangle(loc);
+  drawRubberbandShapeOne(loc);
+
+
+}
+
+function drawBezierCurve() {
+   context.beginPath();
+   context.moveTo(endPoints[0].x, endPoints[0].y);
+   context.quadraticCurveTo(controlPoints[1].x, controlPoints[1].y,
+                         endPoints[1].x, endPoints[1].y);
+   context.stroke();
+   context.lineWidth = lineWidthSelect.value;
+   context.strokeStyle = strokeStyleSelect.value;
+    context.setLineDash([0,0]);
+}
+
+function updateEndAndControlPoints() {
+   endPoints[0].x = rubberbandRect.left;
+   endPoints[0].y = rubberbandRect.top;
+
+   endPoints[1].x = rubberbandRect.left + rubberbandRect.width;
+   endPoints[1].y = rubberbandRect.top  + rubberbandRect.height
+
+   controlPoints[1].x = rubberbandRect.left + rubberbandRect.width;
+   controlPoints[1].y = rubberbandRect.top;
+
+}
+function drawTriangle() {
+   context.beginPath();
+   context.moveTo(endTrianglePoints[1].x, endTrianglePoints[1].y);
+   context.lineTo(controlTrianglePoints[1].x,controlTrianglePoints[1].y);
+   context.lineTo(endTrianglePoints[0].x, endTrianglePoints[0].y);
+   context.stroke();
+   context.fill();
+   context.fillStyle = fillStyleSelect.value;
+   context.strokeStyle = strokeStyleSelect.value;
+   context.lineWidth = lineWidthSelect.value;
+    context.setLineDash([0,0]);
+}
+function triangleEndAndControlPoints() {
+   endTrianglePoints[0].x = rubberbandRect.left;
+   endTrianglePoints[0].y = rubberbandRect.top;
+
+   endTrianglePoints[1].x = rubberbandRect.left + rubberbandRect.width;
+   endTrianglePoints[1].y = rubberbandRect.top  + rubberbandRect.height
+
+   controlTrianglePoints[1].x = rubberbandRect.left + rubberbandRect.width;
+   controlTrianglePoints[1].y = rubberbandRect.top;
+
+}
+
+function drawBezierCurveDotted() {
+   context.beginPath();
+   context.moveTo(endPoints[0].x, endPoints[0].y);
+   context.quadraticCurveTo(controlPoints[1].x, controlPoints[1].y,
+                         endPoints[1].x, endPoints[1].y);
+   context.stroke();
+   context.lineWidth = lineWidthSelect.value;
+   context.strokeStyle = strokeStyleSelect.value;
+   context.setLineDash([5,5]);
+}
+
+
+
+
+function drawRubberbandCircle(loc) {
+   var angle = Math.atan(rubberbandRect.height/rubberbandRect.width),
+       radius = rubberbandRect.height / Math.sin(angle);
+   
+   if (mousedown.y === loc.y) {
+      radius = Math.abs(loc.x - mousedown.x); 
+   }
+
+   context.beginPath();
+   context.arc(mousedown.x, mousedown.y, radius, 0, Math.PI*2, false); 
+   context.stroke();
+   context.fill();
+   context.strokeStyle = strokeStyleSelect.value;
+   context.fillStyle = fillStyleSelect.value;
+   context.lineWidth = '6';
+   context.setLineDash([]);
+}
+
+function updateRubberbandCircle(loc) {
+   updateRubberbandRectangle(loc);
+   drawRubberbandCircle(loc);
+   cursor.erase(context, drawingSurfaceImageData);
+}
+
+function drawRubberbandShapePolygon(loc, sides, startAngle) {
+   var polygon = new Polygon(mousedown.x, mousedown.y,
+                     rubberbandRect.width, 
+                     parseInt(sidesSelect.value),
+                     (Math.PI / 180) * parseInt(startAngleSelect.value),
+                     context.strokeStyle,
+                     context.fillStyle,
+                     context.strokeStyle = strokeStyleSelect.value,
+                     context.fillStyle = fillStyleSelect.value,
+                     fillCheckbox.checked);
+             context.lineWidth = '6';
+   drawPolygon(polygon);
+if(polygonRepeatRadio.checked){   
+   if (!dragging) {
+      polygons.push(polygon);
+   }
+}
+}
+function updateRubberbandPolygon(loc, sides, startAngle) {
+   updateRubberbandRectangle(loc);
+   drawRubberbandShapePolygon(loc, sides, startAngle);
+}
+
+function drawHorizontalLine (y){
+   context.beginPath();
+   context.moveTo(0,y+0.5);
+   context.lineTo(context.canvas.width,y+0.5);
+   context.stroke();
+}
+
+function drawVerticalLine (x){
+  context.beginPath();
+  context.moveTo(x+0.5,0);
+  context.lineTo(x+0.5,context.canvas.height);
+  context.stroke();
+
+}
+
+function drawGuidewires(x,y){
+      context.save();
+      context.strokeStyle = 'rgba(0,0,230,0.4)';
+      context.lineWidth = 0.5;
+      drawVerticalLine(x);
+      drawHorizontalLine(y);
+      context.restore();
+
+}
+function drawGuidewiresOne(x,y){
+      ctx.save();
+      ctx.strokeStyle = 'rgba(0,0,230,0.4)';
+      ctx.lineWidth = 0.5;
+      drawVerticalLineOne(x);
+      drawHorizontalLineOne(y);
+      ctx.restore();
+
+}
+function setDrawPathForEraser(loc) {
+   var eraserWidth = parseFloat(eraserWidthSelect.value);
+   
+   context.beginPath();
+
+   
+      context.arc(loc.x, loc.y,
+                  eraserWidth/2,
+                  0, Math.PI*2, false);
+   context.clip();
+
+}
+
+
+function setErasePathForEraser() {
+   var eraserWidth = parseFloat(eraserWidthSelect.value);
+   
+   context.beginPath();
+
+      context.arc(lastX, lastY,
+                  eraserWidth/2 + ERASER_LINE_WIDTH,
+                  0, Math.PI*2, false);
+
+   context.clip();
+
+}
+
+function setEraserAttributes() {
+  context.lineWidth     = ERASER_LINE_WIDTH;
+  context.shadowColor   = ERASER_SHADOW_STYLE;
+  context.shadowOffsetX = ERASER_SHADOW_OFFSET; 
+  context.shadowOffsetY = ERASER_SHADOW_OFFSET;
+  context.shadowBlur    = ERASER_SHADOW_BLUR;
+  context.strokeStyle   = ERASER_STROKE_STYLE;
+
+}
+
+function eraseLast() {
+context.save();
+   setErasePathForEraser();
+   drawGriz(GRID_LINE_COLOR);
+   context.strokeStyle = "white";
+   context.lineWidth = 7;
+   context.setLineDash([0,0]);
+   skySports(); 
+   context.restore(); 
+   
+}
+
+
+function drawEraser(loc) {
+   context.save();
+
+   setEraserAttributes();     
+   setDrawPathForEraser(loc);
+   context.stroke();
+   context.restore();
+
+}
+function drawPolygons() {
+   polygons.forEach( function (polygon) {
+      drawPolygon(polygon);
+   });
+}
+function drawControlPoint(index) {
+   context.beginPath();
+   context.arc(controlPoints[index].x, controlPoints[index].y,
+               CONTROL_POINT_RADIUS, 0, Math.PI*2, false);
+   context.stroke();
+   context.fill();
+
+}
+function triangleControlPoint(index) {
+   context.beginPath();
+   context.arc(controlTrianglePoints[index].x, controlTrianglePoints[index].y,
+               CONTROL_POINT_RADIUS, 0, Math.PI*2, false);
+   context.stroke();
+   context.fill();
+
+}
+function drawControlPoints() {
+   context.save();
+   context.strokeStyle = CONTROL_POINT_STROKE_STYLE;
+   context.fillStyle   = CONTROL_POINT_FILL_STYLE;
+   
+   drawControlPoint(0);
+   drawControlPoint(1);
+
+
+   context.stroke();
+   context.fill();
+   context.restore();
+
+}
+function triangleControlPoints() {
+   context.save();
+   context.strokeStyle = CONTROL_POINT_STROKE_STYLE;
+   context.fillStyle   = CONTROL_POINT_FILL_STYLE;
+   
+   triangleControlPoint(0);
+    triangleControlPoint(1);
+
+
+   context.stroke();
+   context.fill();
+   context.restore();
+
+}
+function drawEndPoint(index) {
+   context.beginPath();
+   context.arc(endPoints[index].x, endPoints[index].y,
+               CONTROL_POINT_RADIUS, 0, Math.PI*2, false);
+   context.stroke();
+   context.fill();
+
+}
+function triangleEndPoint(index) {
+   context.beginPath();
+   context.arc(endTrianglePoints[index].x, endTrianglePoints[index].y,
+               CONTROL_POINT_RADIUS, 0, Math.PI*2, false);
+   context.stroke();
+   context.fill();
+
+}
+
+function drawEndPoints() {
+   context.save();
+   context.strokeStyle = END_POINT_STROKE_STYLE;
+   context.fillStyle   = END_POINT_FILL_STYLE;
+
+   drawEndPoint(0);
+   drawEndPoint(1);
+
+   context.stroke();
+   context.fill();
+   context.restore();
+
+}
+function triangleEndPoints() {
+   context.save();
+   context.strokeStyle = END_POINT_STROKE_STYLE;
+   context.fillStyle   = END_POINT_FILL_STYLE;
+
+   triangleEndPoint(0);
+   triangleEndPoint(1);
+
+   context.stroke();
+   context.fill();
+   context.restore();
+
+}
+function drawControlAndEndPoints() {
+   drawControlPoints();
+   drawEndPoints();
+
+}
+function triangleControlAndEndPoints() {
+   triangleControlPoints();
+   triangleEndPoints();
+
+}
+function cursorInEndPoint(loc) {
+   var pt;
+
+   endPoints.forEach( function(point) {
+      context.beginPath();
+      context.arc(point.x, point.y,
+                  CONTROL_POINT_RADIUS, 0, Math.PI*2, false);
+
+      if (context.isPointInPath(loc.x, loc.y)) {
+         pt = point;
+      
+      }
+   });
+   return pt;
+
+}
+function triangleCursorInEndPoint(loc) {
+   var pt;
+
+   endTrianglePoints.forEach( function(point) {
+      context.beginPath();
+      context.arc(point.x, point.y,
+                  CONTROL_POINT_RADIUS, 0, Math.PI*2, false);
+
+      if (context.isPointInPath(loc.x, loc.y)) {
+         pt = point;
+      
+      }
+   });
+   return pt;
+
+}
+function triangleCursorInEndPointOne(loc) {
+   var pv;
+
+   endTrianglePointsOne.forEach( function(point) {
+      ctx.beginPath();
+      ctx.arc(point.x, point.y,
+                  CONTROL_POINT_RADIUS, 0, Math.PI*2, false);
+
+      if (ctx.isPointInPath(loc.x, loc.y)) {
+         pv = point;
+      
+      }
+   });
+   return pv;
+
+}
+function cursorInEndPointOne(loc) {
+   var pv;
+
+   endPointsOne.forEach( function(point) {
+      ctx.beginPath();
+      ctx.arc(point.x, point.y,
+                  CONTROL_POINT_RADIUS, 0, Math.PI*2, false);
+
+      if (ctx.isPointInPath(loc.x, loc.y)) {
+         pv = point;
+      
+      }
+   });
+   return pv;
+
+}
+function cursorInControlPoint(loc) {
+   var pt;
+
+   controlPoints.forEach( function(point) {
+      context.beginPath(); 
+      context.arc(point.x, point.y,
+                  CONTROL_POINT_RADIUS, 0, Math.PI*2, false);
+
+      if (context.isPointInPath(loc.x, loc.y)) {
+         pt = point;
+      }
+   });
+
+   return pt;
+
+}
+function triangleCursorInControlPoint(loc) {
+   var pt;
+
+   controlTrianglePoints.forEach( function(point) {
+      context.beginPath(); 
+      context.arc(point.x, point.y,
+                  CONTROL_POINT_RADIUS, 0, Math.PI*2, false);
+
+      if (context.isPointInPath(loc.x, loc.y)) {
+         pt = point;
+      }
+   });
+
+   return pt;
+
+}
+
+function updateDraggingPoint(loc) {
+   draggingPoint.x = loc.x;
+   draggingPoint.y = loc.y;
+
+}
+function startDragging(loc) {
+  saveDrawingSurface();
+  mousedown.x = loc.x;
+  mousedown.y = loc.y;
+}
+
+canvas.onmousedown = function (e){
+   var loc = windowToCanvas(e.clientX, e.clientY);
+   
+   if(repeatRadio.checked) {
+   e.preventDefault();
+   saveDrawingSurface();
+   mousedown.x = loc.x;
+   mousedown.y = loc.y;
+   dragging = true;
+   
+}
+if(dottedRepeatRadio.checked) {
+   e.preventDefault();
+   saveDrawingSurface();
+   mousedown.x = loc.x;
+   mousedown.y = loc.y;
+   dragging = true;
+
+}
+if(dottedRepeatRadioCurve.checked) {
+if (!editing) {
+      e.preventDefault();
+      saveDrawingSurface();
+      mousedown.x = loc.x;
+      mousedown.y = loc.y;
+      updateRubberbandRectangle(loc);
+      dragging = true;
+   
+   }
+   else {
+      draggingPoint = cursorInControlPoint(loc);
+      
+      if (!draggingPoint) {
+         draggingPoint = cursorInEndPoint(loc);
+}      
+     }
+}
+if(textRepeatRadio.checked){
+fontHeight = context.measureText('W').width;
+
+   fontHeight += fontHeight/6;
+   line = new TextLine(loc.x, loc.y);
+   moveCursor(loc.x, loc.y);
+  if (showInstructionsText) {
+         instructionsText.style.display = 'inline';
+      
+      }
+
+}
+if(weeRepeatRadio.checked){
+saveDrawingSurface();
+
+   mousedown.x = loc.x;
+   mousedown.y = loc.y;
+
+   lastX = loc.x;
+   lastY = loc.y;
+   
+   dragging = true;
+  
+}
+if(eraserRepeatRadio.checked) {
+   saveDrawingSurfaceOne();
+   mousedown.x = loc.x;
+   mousedown.y = loc.y; 
+   dragging = true;
+}
+if(noRepeatRadio.checked) {
+   if (!editing) {
+      e.preventDefault();
+      saveDrawingSurface();
+      mousedown.x = loc.x;
+      mousedown.y = loc.y;
+      updateRubberbandRectangle(loc);
+      dragging = true;
+   
+   }
+   else {
+      draggingPoint = cursorInControlPoint(loc);
+      
+      if (!draggingPoint) {
+         draggingPoint = cursorInEndPoint(loc);
+}      
+     }
+     }
+
+if(triangleRepeatRadioCurve.checked) {
+if (!editing) {
+      e.preventDefault();
+      saveDrawingSurface();
+      mousedown.x = loc.x;
+      mousedown.y = loc.y;
+      updateRubberbandRectangle(loc);
+      dragging = true;
+   
+   }
+   else {
+      draggingPoint = triangleCursorInControlPoint(loc);
+      
+      if (!draggingPoint) {
+         draggingPoint = triangleCursorInEndPoint(loc);
+}      
+     }
+}
+if(polygonRepeatRadio.checked){
+e.preventDefault();
+if (!editing) {
+      e.preventDefault();
+      saveDrawingSurface();
+      mousedown.x = loc.x;
+      mousedown.y = loc.y;
+      updateRubberbandRectangle(loc);
+      dragging = true;
+   
+   }
+   else {
+      draggingPoint = cursorInControlPoint(loc);
+      
+      if (!draggingPoint) {
+         draggingPoint = cursorInEndPoint(loc);
+}      
+     }   if (editing) {
+     polygons.forEach( function (polygon) {
+        polygon.createPath(context);
+        if (context.isPointInPath(loc.x, loc.y)) {
+           startDragging(loc);
+           dragging = polygon;
+           draggingOffsetX = loc.x - polygon.x;
+           draggingOffsetY = loc.y - polygon.y;
+           return;
+        }
+     });
+   }
+   else {
+     startDragging(loc);
+     dragging = true;
+}
+   }
+ };
+canvas.onmousemove = function (e){
+    var loc = windowToCanvas(e.clientX, e.clientY);
+    e.preventDefault();
+ if(repeatRadio.checked) {
+if(dragging){
+  restoreDrawingSurface();
+  updateRubberbandRectangle(loc);
+  drawRubberbandShape(loc);
+  draggingPoint = false;
+}
+}
+if(dottedRepeatRadio.checked){
+if(dragging){
+   restoreDrawingSurface();
+   drawRubberbandDotted(loc);
+   updateRubberbandRectangle(loc); 
+}
+}
+if(weeRepeatRadio.checked) {
+   if(dragging){
+   restoreDrawingSurface();
+   updateRubberbandCircle(loc);
+}   
+}    
+if(eraserRepeatRadio.checked) {
+      
+      if (dragging) {
+         eraseLast();
+         drawEraser(loc);
+         saveDrawingSurfaceOne();
+      }
+      lastX = loc.x;
+      lastY = loc.y;
+  
+   }
+if(noRepeatRadio.checked) { 
+ if (dragging || draggingPoint) {   
+     e.preventDefault();
+      restoreDrawingSurface();  
+   if (dragging) {
+      
+      drawControlAndEndPoints();
+       updateRubberbandRectangle(loc);
+       updateEndAndControlPoints();
+       drawBezierCurve();
+   }
+   else if (draggingPoint) {
+      updateDraggingPoint(loc);
+      drawControlAndEndPoints();
+      drawBezierCurve();
+   }
+}
+};
+if(triangleRepeatRadioCurve.checked){ 
+ if (dragging || draggingPoint) {   
+     e.preventDefault();
+      restoreDrawingSurface();  
+   if (dragging) {
+      
+      triangleControlAndEndPoints();
+       updateRubberbandRectangle(loc);
+        triangleEndAndControlPoints();
+       drawTriangle();
+   }
+   else if (draggingPoint) {
+      updateDraggingPoint(loc);
+      triangleControlAndEndPoints();
+      drawTriangle();
+   }
+}
+};
+if(dottedRepeatRadioCurve.checked) {
+if (dragging || draggingPoint) {   
+     e.preventDefault();
+      restoreDrawingSurface();  
+   if (dragging) {
+      
+      drawControlAndEndPoints();
+       updateRubberbandRectangle(loc);
+       updateEndAndControlPoints();
+       drawBezierCurveDotted();
+   }
+   else if (draggingPoint) {
+      updateDraggingPoint(loc);
+      drawControlAndEndPoints();
+      drawBezierCurveDotted();
+   }
+}
+};
+if(polygonRepeatRadio.checked){
+   if (editing && dragging) {
+      dragging.x = loc.x - draggingOffsetX;
+      dragging.y = loc.y - draggingOffsetY;
+
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      drawGriz('lightgray', 10, 10);
+      drawPolygons();
+   }
+   else {
+     if (dragging) {
+        restoreDrawingSurface();
+        updateRubberbandPolygon(loc, sides, startAngle);
+
+        if (guidewires) {
+           drawGuidewires(mousedown.x, mousedown.y);
+        }
+     }
+   }
+}
+};
+canvas.onmouseup = function (e){
+   var loc = windowToCanvas(e.clientX, e.clientY);
+if(repeatRadio.checked) {
+      restoreDrawingSurface();
+      updateRubberband(loc);
+      drawRubberbandShape(loc);
+      dragging = false;
+
+}
+if(dottedRepeatRadio.checked) {
+   restoreDrawingSurface();
+   updateRubberbandRectangle(loc);
+   drawRubberbandDotted(loc);
+   dragging=false;
+}
+if (eraserRepeatRadio.checked) {
+      eraseLast();
+      dragging = false;
+      saveDrawingSurface();
+   
+   }
+if(weeRepeatRadio.checked){
+   restoreDrawingSurface();
+   updateRubberbandCircle(loc);
+   dragging=false;
+}
+if(polygonRepeatRadio.checked) {
+   dragging = false;
+
+   if (editing) {
+   restoreDrawingSurface();
+   stopEditing();
+   drawPolygons();
+   }
+   else {
+      restoreDrawingSurface();
+      updateRubberbandPolygon(loc);
+      
+   }
+}
+if(dottedRepeatRadioCurve.checked){
+restoreDrawingSurface();
+   if (!editing) {
+    updateRubberbandRectangle(loc);
+    updateEndAndControlPoints();
+    drawBezierCurveDotted();
+      drawControlAndEndPoints();
+      dragging = false;
+      editing = true;
+      if (showInstructions) {
+         instructions.style.display = 'inline';
+      
+      }
+   
+}
+   else {
+      if (draggingPoint) drawControlAndEndPoints();
+      else               editing = false;
+
+      drawBezierCurveDotted();
+      draggingPoint = undefined;
+}   
+  }
+if(triangleRepeatRadioCurve.checked) {
+  restoreDrawingSurface();
+   if (!editing) {
+    updateRubberbandRectangle(loc);
+     triangleEndAndControlPoints();
+    drawTriangle();
+      triangleControlAndEndPoints();
+      dragging = false;
+      editing = true;
+      if (showInstructions) {
+         instructions.style.display = 'inline';
+      
+      }
+   
+}
+   else {
+      if (draggingPoint) triangleControlAndEndPoints();
+      else               editing = false;
+
+      drawTriangle();
+      draggingPoint = undefined;
+}   
+  }
+if(noRepeatRadio.checked) {
+  restoreDrawingSurface();
+   if (!editing) {
+    updateRubberbandRectangle(loc);
+    updateEndAndControlPoints();
+    drawBezierCurve();
+      drawControlAndEndPoints();
+      dragging = false;
+      editing = true;
+      if (showInstructions) {
+         instructions.style.display = 'inline';
+      
+      }
+   
+}
+   else {
+      if (draggingPoint) drawControlAndEndPoints();
+      else               editing = false;
+
+      drawBezierCurve();
+      draggingPoint = undefined;
+}   
+  }
+
+};
+
+
+function draw(){
+patternRadio = document.querySelector('input[type="radio"][name="patternRadio"]:checked').value;
+
+if(patternRadio === "repeatRadio"){
+updateRubberbandRectangle(loc);
+   updateEndAndControlPoints();
+   drawBezierCurve();
+   drawControlAndEndPoints();
+}
+if(patternRadio === "ddaRepeatRadio") {
+updateRubberbandRectangle(loc);
+  drawRubberbandRwere(loc);
+  editing = false;
+  draggingPoint = false;
+
+
+}
+if(patternRadio === "powerRepeatRadio"){
+   updateRubberbandCircle(loc);
+}
+if(patternRadio === "polygonRepeatRadio") {
+updateRubberbandPolygon(loc, sides, startAngle);
+}
+if(patternRadio === "textRepeatRadio") {
+   TextCursor;
+   TextLine;
+}
+}
+function drawOne(){
+patternRadioOne = document.querySelector('input[type="radio"][name="patternRadioOne"]:checked').value;
+
+if(patternRadio === "twoRepeatRadio"){
+updateRubberbandRectangle(loc);
+   updateEndAndControlPointsOne();
+   drawBezierCurveOne();
+   drawControlAndEndPointsOne();
+}
+if(patternRadio === "threeRepeatRadio") {
+updateRubberbandRectangle(loc);
+  drawRubberbandShapeOne(loc);
+  editing = false;
+  draggingPointOne = false;
+
+
+}
+if(patternRadio === "powerRepeatRadio"){
+   updateRubberbandCircle(loc);
+}
+if(patternRadio === "vanRepeatRadio") {
+
+}
+if(patternRadio === "textRepeatRadio") {
+   TextCursor;
+   TextLine;
+}
+}
+var Point = function (x, y) {
+   this.x = x;
+   this.y = y;
+};
+
+var Polygon = function (centerX, centerY, radius, sides, startAngle, strokeStyle, fillStyle, filled) {
+   this.x = centerX;
+   this.y = centerY;
+   this.radius = radius;
+   this.sides = sides;
+   this.startAngle = startAngle;
+   this.strokeStyle = strokeStyle;
+   this.fillStyle = fillStyle;
+   this.filled = filled;
+};
+
+Polygon.prototype = {
+   getPoints: function () {
+      var points = [],
+          angle = this.startAngle || 0;
+
+      for (var i=0; i < this.sides; ++i) {
+         points.push(new Point(this.x + this.radius * Math.sin(angle),
+                           this.y - this.radius * Math.cos(angle)));
+         angle += 2*Math.PI/this.sides;
+      }
+      return points;
+   },
+
+   createPath: function (context) {
+      var points = this.getPoints();
+
+      context.beginPath();
+
+      context.moveTo(points[0].x, points[0].y);
+
+      for (var i=1; i < this.sides; ++i) {
+         context.lineTo(points[i].x, points[i].y);
+      }
+
+      context.closePath();
+   },
+
+
+
+   stroke: function (context) {
+      context.save();
+      this.createPath(context);
+      context.strokeStyle = this.strokeStyle;
+      context.stroke();
+      context.restore();
+   },
+
+   fill: function (context) {
+      context.save();
+      this.createPath(context);
+      context.fillStyle = this.fillStyle;
+      context.fill();
+      context.restore();
+   },
+
+   move: function (x, y) {
+      this.x = x;
+      this.y = y;
+   },
+};
+
+instructionsOkayButton.onclick = function (e) {
+   instructions.style.display = 'none';
+   instructionsOne.style.display = 'none';
+};
+lineWidthSelect.onchange = function (e) {
+   context.lineWidthSelect = lineWidth.value;
+};
+instructionsNoMoreButton.onclick = function (e) {
+   instructions.style.display = 'none';
+    showInstructions = false;
+};
+
+eraseAllButton.onclick = function (e){
+       context.clearRect(0,0, canvas.width, canvas.height);
+       ctx.clearRect(0,0, canvas.width, canvas.height);
+       drawGriz('lightgrey', 10, 10);
+       drawGridOne('lightgrey', 10, 10);
+       saveDrawingSurface();
+       saveDrawingSurfaceOne();
+
+};
+fillStyleSelect.onchange = function (e) {
+   context.fillStyle = fillStyleSelect.value;
+};
+
+strokeStyleSelect.onchange = function (e){
+    context.strokeStyle = strokeStyleSelect.value;
+    
+
+
+};
+
+instructionsNoMoreButton.onclick = function (e) {
+   instructions.style.display = 'none';
+   showInstructions = false;
+   showInstructionsOne = false;
+   instructions.style.display = 'none';
+   showInstructions = false;
+   instructions.style.display = 'none';
+   showInstructions = false;
+};
+
+instructionsNoMoreButtonText.onclick = function (e) {
+   instructionsText.style.display = 'none';
+   showInstructionsText = false;
+};
+
+instructionsOkayButton.onclick = function (e) {
+   instructions.style.display = 'none';
+};
+
+instructionsOkayButtonText.onclick = function (e) {
+   instructionsText.style.display = 'none';
+};
+
+document.onkeydown = function (e) {
+if(textRepeatRadio.checked) {
+   if (e.keyCode === 8 || e.keyCode === 13) {
+      // The call to e.preventDefault() suppresses
+      // the browser's subsequent call to document.onkeypress(),
+      // so only suppress that call for backspace and enter.
+      e.preventDefault();
+   }
+
+   if (e.keyCode === 8) {   // backspace
+      context.save();
+
+      line.erase(context, drawingSurfaceImageData);
+      line.removeCharacterBeforeCaret();
+
+      moveCursor(line.left + line.getWidth(context),
+                 line.bottom);
+
+      line.draw(context);
+
+      context.restore();
+   }
+}
+if(textRepeatRadioOne.checked) {
+   if (e.keyCode === 8 || e.keyCode === 13) {
+      // The call to e.preventDefault() suppresses
+      // the browser's subsequent call to document.onkeypress(),
+      // so only suppress that call for backspace and enter.
+      e.preventDefault();
+   }
+
+   if (e.keyCode === 8) {   // backspace
+      ctx.save();
+
+      linz.erase(ctx, drawingSurfaceImageDataOne);
+      linz.removeCharacterBeforeCaret();
+
+      moveCursorOne(linz.left + linz.getWidth(ctx),
+                 linz.bottom);
+
+      linz.draw(ctx);
+
+      ctx.restore();
+   }
+}
+}  
+document.onkeypress = function (e) {
+   
+if(textRepeatRadio.checked) {
+   var key = String.fromCharCode(e.which);
+   if (e.keyCode !== 8 && !e.ctrlKey && !e.metaKey) {
+     e.preventDefault();
+
+     context.save();
+
+     line.erase(context, drawingSurfaceImageData);
+     line.insert(key);
+
+     moveCursor(line.left + line.getWidth(context),
+                line.bottom);
+
+     context.shadowColor = 'transparent';
+     context.shadowOffsetX = 1;
+     context.shadowOffsetY = 1;
+     context.shadowBlur = 2;
+      context.setLineDash([]);
+     line.draw(context);
+
+     context.restore();
+   }
+}
+}
+
+
+
+disableRepeatRadio.onclick = function (e) {
+   var z = document.getElementById('controls');
+   z.style.left= '-3000px';
+   z.style.top = '50px';
+   cursor.erase(context, drawingSurfaceImageData);
+   cursor.erase(context, drawingSurfaceImageData);
+   saveDrawingSurface();
+   cursor.erase(context, drawingSurfaceImageData);
+   context.putImageData(drawingSurfaceImageData, 0, 0);
+   context.shadowColor = 'transparent';
+   context.shadowOffsetX = 0;
+     context.shadowOffsetY = 0;
+     context.shadowBlur = 0;
+
+};
+moveBackButton.onclick = function (e) {
+   var d = document.getElementById('controls');
+   d.style.left= '20px';
+   d.style.top = '30px';
+   context.style.display = 'none';
+   
+
+};
+
+
+guidewireCheckbox.onchange = function (e){
+    guidewire = guidewireCheckbox.checked;
+
+
+};
+
+
+setFont();
+setFontOne();
+fontSelect.onchange = setFont;
+sizeSelect.onchange = setFont;
+context.fontSelect ='Arial';
+context.sizeSelect = '10px';
+skySports();
+skySportsOne();
+
+
+function download(){
+const imageLink = document.createElement('a');
+const canvas = document.getElementById('canvas');
+imageLink.download = 'canvas.jpg';
+imageLink.href = canvas.toDataURL('image/jpg', 1);
+imageLink.click();
+
+}
+
+</script>
+
+</body>
+
+</html>
+
