@@ -1,0 +1,82 @@
+
+
+{% block content%}
+
+<div class="container py-4 text-center">
+
+
+    {% if current_user.is_authenticated %}
+<div id="sky">
+    <h1>Welcome {{ current_user.username }}</h1>
+    <h1>Email: {{ current_user.email }}</h1>
+    <h1>Information: {{ current_user.information }}</h1>
+    <a href="{{url_for('logout')}}">Logout</a>
+
+    {% else %}
+
+</div>    
+    {% endif %}
+</div>
+
+{% endblock %}
+
+  <!-- Basic Sample to other HTML Pages -->
+
+<!-- MACROS Imports -->
+
+<!-- Jumbo Text -->
+{% block jumbo_text%} 
+
+    <form method="POST" action="/" enctype="multipart/form-data">
+        <!-- File Upload-->
+        <div class="form-group">
+            <label for="inputFile">File input</label>
+            <input class="form-control-file" type="file" name="inputFile">
+        </div>
+        <!-- Location -->
+        <div class="form-group">
+            <label for="location">Location</label>
+            <input class="form-control" type="text" name="location">
+        </div>
+
+        <!-- Text -->
+        <div class="form-group">
+            <label for="text">Write Text</label>
+            <textarea class="form-control" name="text" id="text" rows="5" placeholder="Add a Description"></textarea>
+        </div>
+
+        <!-- Submit -->        
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{% endblock %}
+<!-- Jumbo Subtext -->
+{% block jumbo_content%} 
+{%if all_pic%}
+    <div  class="d-flex justify-content-center">
+        <div class="card" style="width: 50%;">
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+<!-- First Picture, Must be rendered Outside the For Look because
+                    of bootstrap class 'class="carousel-item active". That needs to be displayed separate -->
+                    <div class="carousel-item active">
+                        <img class="card-img-top" src="data:;base64,{{all_pic[0].rendered_data}}" alt="WOOW">
+                    <a href="{{url_for('delete', pic_id=all_pic[0].id)}}" class="btn btn-outline-primary">Delete</a>
+                    <!-- Carousel Arrow Controler -->
+                    
+                    
+                </div>       
+            </div>
+        </div>
+    </div>
+
+{% endif %}
+{% endblock%}
+
+<!-- Jumbo BTN  -->
+{% block jumbo_btn %}
+
+
+{% endblock%}
+    
+
+<a href="{{url_for('logout')}}">Logout</a>
