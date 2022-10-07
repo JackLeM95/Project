@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+
+<html>
+
+
+
+<style>
+
+
+
+#blueSky{
+  background-color: #ccff33;
+  width:100%;
+  height:200px;
+  top:0px;
+}
+#greenSky{
+  background-color: #ffff80;
+  width:100%;
+  height:4000px;
+  top:500px;
+}
+body { margin:0px; padding:0px; }
+
+
+#menu771 {
+       width:800px;
+       height:40px;
+       font-size:17px;
+       font-family:Tahoma,Geneva,sans-serif;
+       font-weight:bold;
+       text-align:center;
+       background-color:#33CC33;
+       border-radius:10px;
+       position:absolute;
+       left:300px;
+       top:70px;
+        border-top: solid 2px blue;
+}
+
+#menu771 ul{
+           height:auto;
+           padding:8px 0px;
+           margin:0px
+}
+
+#menu771 li{
+           display:inline;
+           padding:20px;  
+
+}  
+
+#menu771 a{
+        text-decoration:none;
+        color: #00F;
+         padding: 8px 8px 8px 8px;
+}
+
+#menu771 a:hover {
+
+border-bottom:5px solid #FF9900;
+
+}
+#menu772 {
+       width:40px;
+       height:39px;
+       font-size:17px;
+       font-family:Tahoma,Geneva,sans-serif;
+       font-weight:bold;
+       text-align:center;
+       background-color:#33CC33;
+       border-radius:10px 0px 0px 10px;
+       position:relative;
+       top:-38px;
+       left:-10px;
+       -webkit-transform:skew(30deg);
+       -moz-transform:skew(30deg);
+       -o-transform:skew(30deg);
+        border-top: solid 2px blue;
+}
+
+#menu773 {
+       width:40px;
+       height:39.5px;
+       font-size:17px;
+       font-family:Tahoma,Geneva,sans-serif;
+       font-weight:bold;
+       text-align:center;
+       background-color:#33CC33;
+       border-radius:0px 10px 10px 0px;
+       position:relative;
+       top:-79px;
+       left:769px;
+       -webkit-transform:skew(30deg);
+       -moz-transform:skew(30deg);
+       -o-transform:skew(30deg);
+        border-top: solid 2px blue;
+}
+
+ #cone {
+    background: orange;
+    border-radius: 50%;
+    position:relative;
+    width: 100px;
+    height: 100px;
+    left:15%;
+    top:30px;
+    }
+
+#bienSport{
+position:absolute;
+top:450px;
+left:12%;
+font-weight:bold;
+font-family:Tahoma,Geneva,sans-serif;
+font-size:30px;
+ text-decoration:10px overline orange;
+}
+#bienSportOne{
+position:absolute;
+top:750px;
+left:12%;
+font-weight:bold;
+font-family:Tahoma,Geneva,sans-serif;
+font-size:30px;
+ text-decoration:10px overline orange;
+}
+#bienSportTwo{
+position:absolute;
+top:1650px;
+left:12%;
+font-weight:bold;
+font-family:Tahoma,Geneva,sans-serif;
+font-size:30px;
+}
+#bienSportThree{
+position:absolute;
+top:1200px;
+left:0%;
+font-weight:bold;
+font-family:Tahoma,Geneva,sans-serif;
+font-size:30px;
+ text-decoration:10px overline orange;
+}
+#bienSportFour{
+position:absolute;
+top:3500px;
+left:12%;
+font-weight:bold;
+font-family:Tahoma,Geneva,sans-serif;
+font-size:30px;
+ text-decoration:10px overline orange;
+}
+#wePotato{
+    left: 40px;
+    font-family:Arial;
+    top: 200px;
+}
+#skyPotato{
+    left: 200px;
+    width:1000px;
+    height:190px;
+    font-family:Arial;
+    top: 170px;
+    border-left: transparent;
+    border-top-right-radius:10px;
+    border-bottom-right-radius:10px;
+    border-top-left-radius:0px;
+    border-bottom-left-radius:0px;
+    position:absolute;
+}
+#skyPotatoTwo{
+    left: 150px;
+    width:1000px;
+    height:190px;
+    font-family:Arial;
+    top: 0px;
+    border-left: transparent;
+    border-top-right-radius:10px;
+    border-bottom-right-radius:10px;
+    border-top-left-radius:0px;
+    border-bottom-left-radius:0px;
+    position:absolute;
+}
+textarea {
+    background-color:pink;
+    resize: none;
+    border: 3px solid blue;
+    font-family:Arial;
+    font-size:20px;
+    color:blue;
+    border-radius:10px;
+}
+#davidAttornourg{
+border-radius: 50%;
+  top:-1280px;
+  position:absolute;
+  left:0px;
+
+}
+#bbcSport {
+   border-radius: 50px;
+  display: block;
+  margin-top:-1370px;
+  margin-left: 50px;
+  margin-right: auto;
+ 
+}
+#bbcSportOne {
+  display: block;
+  margin-top:73px;
+  margin-left: 50px;
+  margin-right: auto;
+  border-radius: 50%;
+  position:absolute;
+}
+#bbcSportTwo {
+  display: block;
+  margin-top:1000px;
+  margin-left: 230px;
+  margin-right: auto;
+  border-radius: 50%;
+    position:absolute;
+}
+#eeeeWsssss{
+border-top-left-radius:10px;
+border-bottom-left-radius:10px;
+}
+#eeeeWzzzzz{
+border-radius: 50%;
+left:40%;
+top:50px;
+position:relative;
+}
+.tabGroup{
+          font: 10pt arial,verdana;
+          height:20px;
+          width:150px;
+   text-decoration:none;
+}
+
+.tabGroup > input[type="radio"]{
+ position:relative;
+ left:-50px;
+          top:-800px;
+}
+
+.tabGroup > input[type="radio"] + label {
+
+ display:inline-block;
+
+ border:1px solid black;
+ border-radius:5px 5px 0 0;
+-moz-border-radius:5px 5px 0 0;
+-webkit-border-radius:5px 5px 0 0;
+
+border-bottom:0;
+
+padding:5px 10px;
+
+background-color:#ddd;
+text-decoration:none;
+}
+
+.tabGroup{
+          font: 10pt arial,verdana;
+          height:900px;
+          width:1210px;
+          position:relative;
+          left:30px;
+          top:50px;
+         
+          
+
+}
+
+.tabGroup > input[type="radio"]{
+ position:absolute;
+ left:-100px;
+ top:-100px;
+ overflow:hidden;
+}
+
+.tabGroup > input[type="radio"] + label {
+
+ display:inline-block;
+
+ border:1px solid black;
+ border-radius:5px 5px 0 0;
+-moz-border-radius:5px 5px 0 0;
+-webkit-border-radius:5px 5px 0 0;
+
+border-bottom:0;
+
+padding:5px 10px;
+
+background-color:#ddd;
+text-decoration:none;
+}
+
+.tabGroup > input[type="radio"]:focus + label{
+ border:1px dashed black;
+}
+
+.tabGroup > input[type="radio"]:checked + label{
+  background-color:white;
+ font-weight:bold;
+ border-bottom:1px solid white;
+ margin-bottom:-1px;
+text-decoration:none;
+}
+
+
+
+.tabGroup > div {
+ display:none;
+ border: 1px solid black;
+ background-color:white;
+ padding:10px 10px;
+ height:100%;
+ overflow:hidden;
+ text-decoration:none;
+
+border-radius:0 5px 5px 5px;
+-moz-border-radius:0 5px 5px 5px;
+-webkit-border-radius:0 5px 5px 5px;
+
+}
+
+.tab1:checked ~ .tab1, .tab2:checked ~ .tab2, .tab3:checked ~ .tab3, .tab4:checked ~ .tab4, .tab5:checked ~ .tab5,
+ .tab6:checked ~ .tab6, .tab7:checked ~ .tab7, .tab8:checked ~ .tab8, .tab9:checked ~ .tab9, .tab10:checked ~ .tab10
+, .tab11:checked ~ .tab11, .tab12:checked ~ .tab12{
+  display:block;
+
+}
+#home{
+background:orange;
+ left:152px;
+ top:101px;
+  width: 239px;
+  height: 100px;
+  text-align: center;
+  font-size: 25px;
+  color:blue;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+}
+#bbcOne{
+background:orange;
+ left:154px;
+ top:-149px;
+  width: 239px;
+  height: 100px;
+  text-align: center;
+  font-size: 25px;
+  color:blue;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+}
+#homeOne{
+background:red;
+  margin: auto;
+  width: 200px;
+  height: 100px;
+  top:-200px;
+  left:-290px;
+  text-align: center;
+  font-size: 25px;
+  color:blue;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+  text-decoration:none;
+}
+#reallyBored{
+  background-color:red;
+  margin: auto;
+  width: 200px;
+  height: 100px;
+  top:400px;
+  left:40px;
+  position:relative;
+}
+#bbcTwo{
+background:red;
+  margin: auto;
+  width: 200px;
+  height: 100px;
+  top:-450px;
+  left:-300px;
+  text-align: center;
+  font-size: 25px;
+  color:blue;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+}
+#wweeeAqqz{
+ border-bottom: 100px solid orange;
+      border-left: 55px solid transparent;
+      height: 0px;
+      width: 90px;
+      left:56px;
+      top:201px;
+      border-bottom-left-radius:70px 60px;
+      position:relative;
+}
+#wweeeAqqzOne{
+ border-bottom: 100px solid orange;
+      border-left: 55px solid transparent;
+      height: -100px;
+      width: 100px;
+      left:60px;
+      top:-49px;
+      border-bottom-left-radius:70px 60px;
+      position:relative;
+}
+#acerLaptop{
+border-bottom: 100px solid red;
+      border-left: 45px solid transparent;
+      height: 3px;
+      width: 57px;
+      left:110px;
+      top:-100px;
+      border-top-left-radius:90px 90px;
+      position:relative;
+  
+}
+#acerLaptopOne{
+border-bottom: 100px solid red;
+      border-left: 45px solid transparent;
+      height: 3px;
+      width: 40px;
+      left:114px;
+      top:-350px;
+      border-top-left-radius:90px 90px;
+      position:relative;
+  
+}
+#skyLaptop{
+      border-right:7px solid red;
+      border-top:7px solid red;
+      border-bottom:7px solid orange;
+      height: 184px;
+      width: 400px;
+      top:-300px;
+      left:390px;
+      background:white;
+      display:flex;
+    text-align:center;
+   font-size: 25px;
+  color:blue;
+display:flex;
+  justify-content:center;
+  align-items:center;
+   font-size: 25px;
+      position:relative;
+  
+}
+#skyLaptopOne{
+      border-right:7px solid red;
+      border-top:7px solid red;
+      border-bottom:7px solid orange;
+      height: 184px;
+      width: 400px;
+      top:-550px;
+      left:390px;
+      background:white;
+      display:flex;
+  justify-content:center;
+  align-items:center;
+   font-size: 25px;
+  color:blue;
+      position:relative;
+  
+}
+#rad12, #rad11, #rad10, #rad9, #rad8, #rad7, #rad6, #rad5, #rad4, #rad3, #rad2, #rad1{
+left:-500px;
+}
+#vickItchy{
+text-decoration:10px overline orange;
+}
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: pink; /* Fallback color */
+  background-color:green; /* Black w/ opacity */
+  color:orange;
+  font-size: 35px;
+}
+.modalOne {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: pink; /* Fallback color */
+  background-color:green; /* Black w/ opacity */
+  color:orange;
+  font-size: 35px;
+}
+/* Modal Content */
+.modal-content {
+  background-color: blue;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  height:200px;
+}
+.modal-contentOne {
+  background-color: pink;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  height:200px;
+}
+.modal-contentTwo {
+  background-color: pink;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  height:200px;
+}
+/* The Close Button */
+.close {
+  color: red;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.closeOne {
+  color: red;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.close:hover,
+.close:focus {
+  color: red;
+  text-decoration: none;
+  cursor: pointer;
+}
+.closeOne:hover,
+.closeOne:focus {
+  color: red;
+  text-decoration: none;
+  cursor: pointer;
+}
+#myBtn{
+cursor: pointer;
+}
+#myBtnOne{
+cursor: pointer;
+}
+#rad12, #rad11, #rad10, #rad9, #rad8, #rad7, #rad6, #rad5, #rad4, #rad3, #rad2, #rad1{
+left:-500px;
+}
+#tabGroup{
+text-decoration: none;
+}
+#springSale{
+display:flex;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+}
+#springSaleOne{
+display:flex;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+}
+#qqWrrr{
+color: blue;
+}
+</style>
+
+
+<div id = 'blueSky'>
+</div>
+<div id = 'greenSky'>
+
+<img src="skyeeee.jpg" alt="Image" id="eeeeWzzzzz" width="300" height="200">
+
+
+
+
+<div id ='bienSport'>
+<p id ="qqWrrr"> About the Company</p>
+<textarea id="wePotato" rows="8" cols="125">
+Information about the Company
+</textarea>
+
+</div>
+<div id ='bienSportOne'>
+<p id ="qqWrrr">News</p>
+<div id= "bbcSportOne">
+<img src="skyeeee.jpg" alt="Image" id="eeeeWsssss" width="150" height="200">
+</div>
+<textarea id="skyPotato" rows="8" cols="125">
+News about the Company
+</textarea>
+</div>
+<div id= "bbcSportTwo">
+<img src="skyeeee.jpg" alt="Image" id="eeeeWsssss" width="150" height="200">
+<textarea id="skyPotatoTwo" rows="8" cols="125">
+News about the Company
+</textarea>
+</div>
+<div id ='bienSportTwo'>
+<div id = 'vickItchy'>
+<p id ="qqWrrr">Up and coming events</p>
+</div>
+<div id="feature">
+<div class="tabGroup">
+<input type="radio" name="tabGroup1" id="rad1" class="tab1" checked="checked"/>
+<label for="rad1">January</label>
+
+<input type="radio" name="tabGroup1" id="rad2" class="tab2"/>
+<label for="rad2">February</label>
+
+<input type="radio" name="tabGroup1" id="rad3" class="tab3"/>
+<label for="rad3">March</label>
+
+<input type="radio" name="tabGroup1" id="rad4" class="tab4"/>
+<label for="rad4">April</label>
+
+<input type="radio" name="tabGroup1" id="rad5" class="tab5"/>
+<label for="rad5">May</label>
+
+<input type="radio" name="tabGroup1" id="rad6" class="tab6"/>
+<label for="rad6">June</label>
+
+<input type="radio" name="tabGroup1" id="rad7" class="tab7"/>
+<label for="rad7">July</label>
+
+<input type="radio" name="tabGroup1" id="rad8" class="tab8"/>
+<label for="rad8">August</label>
+
+<input type="radio" name="tabGroup1" id="rad9" class="tab9"/>
+<label for="rad9">September</label>
+
+<input type="radio" name="tabGroup1" id="rad10" class="tab10"/>
+<label for="rad10">October</label>
+
+<input type="radio" name="tabGroup1" id="rad11" class="tab11"/>
+<label for="rad11">November</label>
+
+<input type="radio" name="tabGroup1" id="rad12" class="tab12">
+<label for="rad12">December</label>
+</input>
+</br>
+
+<div class="tab1">
+<div id="myBtn">
+<div id = "wweeeAqqz">
+</div>
+<div id = "home"><p>21st January</p></div>
+<div id="acerLaptop"></div>
+<div id = "homeOne"><p>Wednesday</p></div>
+<div id="skyLaptop">BBQ</div>
+</div>
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+<div id ="springSale">
+    <p>Some text in the Modal..</p>
+</div>
+  </div>
+<div class="modal-contentOne">
+    <p>Some text in the Modal..</p>
+  </div>
+</div>
+<div id="myBtnOne">
+<div id = "wweeeAqqzOne">
+</div>
+<div id = "bbcOne"><p>21st January</p></div>
+<div id="acerLaptopOne"></div>
+<div id = "bbcTwo"><p>Wednesday</p></div>
+<div id="skyLaptopOne">Karaoke</div>
+</div>
+<div id="myModalOne" class="modalOne">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+
+    <span class="closeOne">&times;</span>
+
+<div id ="springSaleOne">
+    <p>text in the Modal..</p>
+</div>
+</div>
+<div class="modal-contentTwo">
+    <p>Some text in the Modal..</p>
+  </div>
+  </div>
+
+
+</div>
+<div class="tab2"><p id="ffive">February</p></div>
+<div class="tab3">March</div>
+<div class="tab4">April</div>
+<div class="tab5">May</div>
+<div class="tab6">June</div>
+<div class="tab7">July</div>
+<div class="tab8">August</div>
+<div class="tab9">September</div>
+<div class="tab10">October</div>
+<div class="tab11">November</div>
+<div class="tab12">December</div>
+</div>
+</div>
+
+</div>
+
+<div id="menu771">
+<ul>
+<li><a href="menu example.html">Home</a></li>
+<li><a href="aboutus.html">About Us</a></li>
+<li><a href="services.html">Services</a></li>
+<li><a href="contactus.html">Contact Us</a></li>
+</ul>
+<div id="menu772"></div>
+<div id="menu773"></div>
+</div>
+</div>
+</div>
+
+<body>
+
+
+</body>
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+var modalOne = document.getElementById("myModalOne");
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+var btnq = document.getElementById("myBtnOne");
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+var spaz = document.getElementsByClassName("closeOne")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+btnq.onclick = function() {
+  modalOne.style.display = "block";
+}
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+   modalOne.style.display = "none";
+}
+spaz.onclick = function() {
+   modalOne.style.display = "none";
+}
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+
+</html>
